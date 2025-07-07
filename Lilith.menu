@@ -1,0 +1,38 @@
+import config from "../../config.js";
+
+export default {
+  name: "menu",
+  desc: "Show command list",
+  category: "user",
+  usage: ${config.PREFIX}menu,
+
+  async run(sock, msg, args) {
+    const menuText = `
+🌸 Lilith Bot Commands 🌸
+
+👤 User:
+  • ${config.PREFIX}botinfo
+  • ${config.PREFIX}quote
+  • ${config.PREFIX}rank
+
+👥 Group:
+  • ${config.PREFIX}welcome on/off
+  • ${config.PREFIX}promote
+  • ${config.PREFIX}demote
+
+🎮 Fun:
+  • ${config.PREFIX}joke
+  • ${config.PREFIX}meme
+
+🤖 AI:
+  • ${config.PREFIX}gpt
+  • ${config.PREFIX}img2prompt
+
+✨ Owner:
+  • ${config.PREFIX}restart
+  • ${config.PREFIX}broadcast
+`;
+
+    await sock.sendMessage(msg.key.remoteJid, { text: menuText });
+  }
+};
